@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Order;
+use App\Models\People;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/persona', function (){
+    return(Order::all());
+});
+Route::get('/persona/:id', function ($id){
+    return(Order::find($id));
+});
+
+Route::get('/order', function (Request $request){
+    return(People::all());
+});
+Route::get('/order/:id', function ($id){
+    return(People::find($id));
 });
