@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Order;
-use App\Models\People;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,16 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/persona', function (){
-    return(Order::all());
-});
-Route::get('/persona/:id', function ($id){
-    return(Order::find($id));
-});
+Route::resource('/persona', PersonController::class);
+// Route::get('/persona/:id', 'PersonController@show');
 
-Route::get('/order', function (Request $request){
-    return(People::all());
-});
-Route::get('/order/:id', function ($id){
-    return(People::find($id));
-});
+Route::resource('/order', OrderController::class);
+// Route::get('/order/:id', 'OrderController@show');
